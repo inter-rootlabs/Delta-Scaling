@@ -44,7 +44,11 @@ export function DsHero() {
         <span className="ds-note__tape" aria-hidden />
         <p>
           Paid ads, funnels, and sales systems for <mark className="ds-hl">B2B SaaS</mark> companies that already have a product worth buying. We
-          measure in ARR, not impressions.
+          measure in{" "}
+          <mark className="ds-hl" style={v({ "--hl-d": "2.3s" })}>
+            ARR
+          </mark>
+          , not <s className="ds-strike">impressions</s>.
         </p>
       </div>
     </section>

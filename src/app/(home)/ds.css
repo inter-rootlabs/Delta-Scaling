@@ -395,7 +395,23 @@ html[data-ds-loader="skip"] .ds-loader { display: none; }
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-html[data-ds-intro="go"] .ds-hl { animation: ds-hl-draw 0.7s var(--ds-ease-out) 1.8s both; }
+html[data-ds-intro="go"] .ds-hl { animation: ds-hl-draw 0.7s var(--ds-ease-out) var(--hl-d, 1.8s) both; }
+/* Hand-drawn pen strike in violet ink: "this, not that". Draws after the highlights. */
+.ds-strike { position: relative; text-decoration: none; white-space: nowrap; }
+.ds-strike::after {
+  content: "";
+  position: absolute;
+  left: -4%;
+  width: 108%;
+  top: 34%;
+  height: 0.5em;
+  background: var(--ds-accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M1 8 C 20 5, 38 7, 55 5.5 S 85 3.5, 99 4.5' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M1 8 C 20 5, 38 7, 55 5.5 S 85 3.5, 99 4.5' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  rotate: -3deg;
+}
+html[data-ds-intro="go"] .ds-strike::after { animation: ds-strike-draw 0.55s var(--ds-ease-out) 2.75s both; }
+@keyframes ds-strike-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes ds-hl-draw { from { background-size: 0% 70%; } to { background-size: 100% 70%; } }
 
 .ds-note__tape {
@@ -442,6 +458,6 @@ html[data-ds-intro="go"] .ds-rise { animation: ds-rise 1s var(--ds-ease-out) bot
 
 @media (prefers-reduced-motion: reduce) {
   .ds-loader { display: none; }
-  .ds-mask > span, .ds-rise, .ds-figure, .ds-hl { animation: none !important; opacity: 1 !important; }
+  .ds-mask > span, .ds-rise, .ds-figure, .ds-hl, .ds-strike::after { animation: none !important; opacity: 1 !important; }
   .ds-mask > span { transform: none !important; }
   }
