@@ -1,36 +1,16 @@
 import Image from "next/image";
 import { BOOKING_URL } from "@/content/site";
 import { HeroFigure } from "./hero-figure";
-import { Orbit } from "./orbit";
+import { PosterCarousel } from "./poster-carousel";
 import { RotatingWord } from "./rotating-word";
-import {
-  PosterArr,
-  PosterBooked,
-  PosterDots,
-  PosterFunnel,
-  PosterMeta,
-  PosterPayback,
-  PosterSystems,
-} from "./posters";
 import logo from "../../../public/logo-gold.png";
 
 const v = (o: Record<string, string | number>) => o as React.CSSProperties;
 
-// Posters ride a slow orbit around the statue (positioned by <Orbit>); each keeps
-// its own tilt and pops in once as the loader lifts.
-const posters = [
-  { id: "meta", el: <PosterMeta />, r: "-7deg" },
-  { id: "arr", el: <PosterArr />, r: "5deg" },
-  { id: "funnel", el: <PosterFunnel />, r: "-9deg" },
-  { id: "dots", el: <PosterDots />, r: "8deg" },
-  { id: "booked", el: <PosterBooked />, r: "12deg" },
-  { id: "systems", el: <PosterSystems />, r: "-12deg" },
-  { id: "payback", el: <PosterPayback />, r: "-10deg" },
-];
 const WORDS = ["growth engine.", "ARR velocity.", "paid funnels.", "sales systems."];
 
 // Layout follows the reference hero: headline top-left, statue centred and cut by
-// the bottom edge, posters orbiting it, a CTA pill bottom-left and a small
+// the bottom edge, a poster carousel behind it, a CTA pill bottom-left and a small
 // paper note bottom-right.
 export function DsHero() {
   return (
@@ -49,15 +29,7 @@ export function DsHero() {
         </span>
       </h1>
 
-      <Orbit>
-        {posters.map((p, i) => (
-          <div key={p.id} className={`ds-orbit__item ds-orbit__item--${p.id}`}>
-            <div className="ds-pop ds-poster-wrap" style={v({ "--r": p.r, "--o": i })}>
-              {p.el}
-            </div>
-          </div>
-        ))}
-      </Orbit>
+      <PosterCarousel />
 
       <HeroFigure />
 

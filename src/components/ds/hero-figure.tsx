@@ -48,7 +48,7 @@ export function HeroFigure() {
         fit="contain"
         mode="mono"
         shape="dot"
-        cellSize={small ? 13 : 11}
+        cellSize={small ? 6 : 8}
         angle={45}
         inkColor={t.ink}
         paperColor="#000000"
@@ -56,7 +56,7 @@ export function HeroFigure() {
         contrast={t.contrast}
         brightness={t.brightness}
         lumaDots={t.lumaDots}
-        revealRadius={small ? 80 : 120}
+        revealRadius={small ? 70 : 110}
         softness={0.7}
         linger={0.9}
         clickBurst={false}

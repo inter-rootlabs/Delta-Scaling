@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <>
       <noscript>
-        <style>{`.ds-loader{display:none!important}.ds-mask>span,.ds-rise,.ds-pop,.ds-figure{animation:none!important;opacity:1!important}.ds-mask>span{transform:none!important}`}</style>
+        <style>{`.ds-loader{display:none!important}.ds-mask>span,.ds-rise,.ds-figure{animation:none!important;opacity:1!important}.ds-mask>span{transform:none!important}`}</style>
       </noscript>
       <Loader />
       <DsNav />
