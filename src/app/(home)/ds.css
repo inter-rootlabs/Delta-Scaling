@@ -384,6 +384,20 @@ html[data-ds-loader="skip"] .ds-loader { display: none; }
     linear-gradient(170deg, rgb(255 255 255 / 0.35), transparent 40%, rgb(120 90 40 / 0.08));
   clip-path: polygon(0 2%, 9% 0, 22% 1.6%, 37% 0.2%, 52% 1.4%, 66% 0, 81% 1.2%, 100% 0.4%, 99.4% 22%, 100% 48%, 99.2% 76%, 100% 98%, 84% 99.2%, 68% 98%, 51% 100%, 33% 98.6%, 17% 100%, 0 98.8%, 0.8% 72%, 0 47%, 0.6% 21%);
 }
+/* Highlighter-pen mark on key words in the note; it draws across once the note lands. */
+.ds-hl {
+  color: inherit;
+  font-weight: 600;
+  padding: 0 0.15em;
+  margin: 0 -0.05em;
+  border-radius: 0.2em 0.35em 0.25em 0.3em;
+  background: linear-gradient(100deg, rgb(255 196 0 / 0.75), rgb(255 184 0 / 0.95) 60%, rgb(255 196 0 / 0.7)) no-repeat left 62% / 100% 70%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+html[data-ds-intro="go"] .ds-hl { animation: ds-hl-draw 0.7s var(--ds-ease-out) 1.8s both; }
+@keyframes ds-hl-draw { from { background-size: 0% 70%; } to { background-size: 100% 70%; } }
+
 .ds-note__tape {
   position: absolute; z-index: 1; left: 50%; top: -9px;
   width: 74px; height: 20px; translate: -50% 0; rotate: 3deg;
@@ -428,6 +442,6 @@ html[data-ds-intro="go"] .ds-rise { animation: ds-rise 1s var(--ds-ease-out) bot
 
 @media (prefers-reduced-motion: reduce) {
   .ds-loader { display: none; }
-  .ds-mask > span, .ds-rise, .ds-figure { animation: none !important; opacity: 1 !important; }
+  .ds-mask > span, .ds-rise, .ds-figure, .ds-hl { animation: none !important; opacity: 1 !important; }
   .ds-mask > span { transform: none !important; }
   }
