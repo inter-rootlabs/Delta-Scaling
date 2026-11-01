@@ -1,9 +1,8 @@
-import Image from "next/image";
 import { BOOKING_URL } from "@/content/site";
 import { HeroFigure } from "./hero-figure";
 import { PosterCarousel } from "./poster-carousel";
 import { RotatingWord } from "./rotating-word";
-import logo from "../../../public/logo-gold.png";
+import { BrandMark } from "./brand-mark";
 
 const v = (o: Record<string, string | number>) => o as React.CSSProperties;
 
@@ -35,7 +34,7 @@ export function DsHero() {
 
       <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="ds-pill ds-rise" style={v({ "--d": "0.9s" })}>
         <span className="ds-pill__mark" aria-hidden>
-          <Image src={logo} alt="" width={20} height={20} />
+          <BrandMark size={20} />
         </span>
         Book a call
       </a>

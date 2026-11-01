@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import TextLoop from "@/components/TextLoop";
-import logo from "../../../public/logo-gold.png";
+import { BrandMark } from "./brand-mark";
 import { signalLift } from "./signals";
 
 const HOLD_MS = 1250; // logo on screen before the lift
@@ -79,7 +78,7 @@ export function Loader() {
         <Tape d={TAPE_BR} className="ds-tape--br" cross reverse />
       </div>
       <div className="ds-loader__center">
-        <Image src={logo} alt="" priority className="ds-loader__logo" />
+        <BrandMark className="ds-loader__logo" />
         <div className="ds-loader__name ds-wordmark">
           Delta Scaling<span className="ds-loader__reg">®</span>
         </div>

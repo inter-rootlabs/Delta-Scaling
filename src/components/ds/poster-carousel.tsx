@@ -23,6 +23,11 @@ const subscribeWide = (cb: () => void) => {
   return () => mq.removeEventListener("change", cb);
 };
 
+// Wide screens: smaller cards and a lighter curl on a tilted band (see .ds-band in ds.css),
+// drifting toward the top-right. Phones/tablets keep the earlier, more fluid curl.
+const WIDE_LOOK = { cardHeight: 0.5, gap: 28, bend: 0.08, reach: 0.2 };
+const SMALL_LOOK = { cardHeight: 0.66, gap: 22, bend: 0.12, reach: 0.24 };
+
 /**
  * Background band of posters on the React Bits FlexCarousel, tuned calm: a light
  * ribbon bend (no colour split, no liquid), no wobble, a steady marquee on wide
@@ -33,6 +38,7 @@ export function PosterCarousel() {
   // Mount as the loader lifts, so the carousel's own rise-in is the entrance.
   const live = useIntroLive();
   const wide = useSyncExternalStore(subscribeWide, () => window.matchMedia(WIDE).matches, () => true);
+  const look = wide ? WIDE_LOOK : SMALL_LOOK;
   const items = useMemo(() => POSTERS.map((p) => ({ src: `/posters/${p.id}-${theme}.webp`, alt: p.alt })), [theme]);
 
   return (
@@ -42,17 +48,17 @@ export function PosterCarousel() {
           items={items}
           preset="ribbon"
           intro="rise"
-          cardHeight={0.5}
-          gap={28}
+          cardHeight={look.cardHeight}
+          gap={look.gap}
           radius={14}
           fit="natural"
-          bend={0.08}
-          reach={0.2}
+          bend={look.bend}
+          reach={look.reach}
           dispersion={0}
           liquid={0}
           squeeze={0.04}
           autoplay={!wide}
-          marquee={wide ? 34 : 0}
+          marquee={wide ? -34 : 0}
           interval={2.4}
           stiffness={14}
           sturdy

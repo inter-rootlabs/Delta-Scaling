@@ -47,7 +47,7 @@ export interface FlexCarouselProps extends Partial<PresetValues> {
   stiffness?: number;
   /** Delta Scaling: no jelly wobble after moves — cards stay rigid. */
   sturdy?: boolean;
-  /** Delta Scaling: continuous marquee drift in px/s (0 = off; replaces autoplay steps). */
+  /** Delta Scaling: continuous marquee drift in px/s, either direction (0 = off; replaces autoplay steps). */
   marquee?: number;
   onChange?: (index: number, item: FlexCarouselItem) => void;
   onSelect?: (index: number, item: FlexCarouselItem) => void;
@@ -897,7 +897,7 @@ const FlexCarousel = ({
         goal = snapPoint(m, goal);
         mode = 'spring';
       }
-      const drifting = s.marquee > 0 && !reducedMotion && introState.done && !pointer.dragging;
+      const drifting = s.marquee !== 0 && !reducedMotion && introState.done && !pointer.dragging;
       if (drifting) {
         // Marquee: a steady glide, no snapping between cards.
         pos += s.marquee * dt;

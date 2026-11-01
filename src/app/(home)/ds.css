@@ -90,7 +90,6 @@ html[data-ds-loader="skip"] .ds-loader { display: none; }
 }
 .ds-loader__logo {
   width: clamp(58px, 6.4vw, 92px);
-  height: auto;
   animation: ds-logo-in 0.9s var(--ds-ease-out) both;
 }
 .ds-loader__name {
@@ -121,6 +120,18 @@ html[data-ds-loader="skip"] .ds-loader { display: none; }
 }
 @keyframes ds-tape-tl { from { transform: rotate(90deg) translateX(-35%); opacity: 0; } }
 @keyframes ds-tape-br { from { transform: translate(30%, 30%); opacity: 0; } }
+
+/* Brand mark: the logo file as a stencil, filled with sun yellow. */
+.ds-mark {
+  display: inline-block;
+  flex-shrink: 0;
+  aspect-ratio: 1;
+  background: var(--ds-sun);
+  -webkit-mask: url("/logo-gold.png") center / contain no-repeat;
+  mask: url("/logo-gold.png") center / contain no-repeat;
+}
+/* The loader is always dark, so it keeps the dark-theme yellow. */
+.ds-loader .ds-mark { background: #ffc400; }
 
 /* ================= Nav: floating liquid-glass bubble ================= */
 .ds-wordmark { font-family: var(--ds-font-head); font-weight: 700; letter-spacing: -0.035em; }
@@ -260,6 +271,11 @@ html[data-ds-loader="skip"] .ds-loader { display: none; }
 
 /* ---------- Poster band: FlexCarousel behind the statue ---------- */
 .ds-band { position: absolute; z-index: 1; left: 0; right: 0; top: 36%; height: 54%; pointer-events: none; }
+/* Wide screens: a slight tilt — level through the centre, leaning toward the
+   bottom-left and top-right corners. Extra width covers the rotated ends. */
+@media (min-width: 1024px) {
+  .ds-band { left: -10%; right: -10%; top: 36%; height: 50%; rotate: -7deg; }
+}
 /* Cards dim while they pass behind the statue so they don't fight the dots. */
 .ds-band {
   --band-fade: linear-gradient(to right, #000 0 31%, rgb(0 0 0 / 0.22) 41% 59%, #000 69% 100%);

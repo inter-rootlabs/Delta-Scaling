@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CalendarDays, Moon, Sun } from "lucide-react";
 import { LiquidGlass } from "@/components/bits/LiquidGlass";
 import { BOOKING_URL } from "@/content/site";
-import logo from "../../../public/logo-gold.png";
+import { BrandMark } from "./brand-mark";
 import { setTheme, useTheme } from "./signals";
 import { StaggeredMenu } from "./staggered-menu";
 
@@ -39,7 +38,7 @@ export function DsNav() {
         <LiquidGlass aria-hidden className="ds-nav__glass" />
         <nav aria-label="Main" className="ds-nav__inner">
           <a href="#top" className="ds-nav__brand" aria-label="Delta Scaling, back to top">
-            <Image src={logo} alt="" width={22} height={22} priority />
+            <BrandMark size={22} />
             <span className="ds-wordmark">
               Delta Scaling<sup>®</sup>
             </span>
